@@ -29,7 +29,7 @@ int main()
         t = time_sort() - t;
         double t_q = t;
 
-        /*for (i = 0; i < number - 1; i++) {
+        for (i = 0; i < number - 1; i++) {
             if (array_b[i] > array_b[i + 1]) {
                 printf("The array_bubble is not sorted");
                 return -1; 
@@ -43,11 +43,10 @@ int main()
         printf("\n");
         printf("%d\t", number);
         printf("Time Bubble Sort = %.10f\n\t", t_b);
-        printf("Time Quick Sort = %.10f\n", t_q);*/
+        printf("Time Quick Sort = %.10f\n", t_q);
 
-        for (i = 0; i < number; i++)
-            printf("%d\n", array_q[i]);
-        
+        free(array_b);
+        free(array_q);
     }
 
     return 0;

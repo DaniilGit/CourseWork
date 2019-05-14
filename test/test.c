@@ -3,27 +3,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int array[10] = {7, 6, 9, 1, 0, 8, 2, 3, 4, 5};
-int number = 10;
+#define number 1024
 
 CTEST(sorts_test, bubble_sort)
 {
-    int expected[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    bubble(array, number);
-    int i;
+    int* array = NULL;
+    int expected = 1024;
 
-    for (i = 0; i < number; i++)
-        ASSERT_EQUAL(expected[i], array[i]);
+    array = (int*)malloc(number * sizeof(int));
+    generator(array, number);
+
+    bubble(array, number);
+    int i, real = 0;
+
+    for (i = 0; i < number; i++) {
+        if (array[i] <= array[i + 1])
+            real++;
+        else
+            real--;
+    }
+
+    ASSERT_EQUAL(expected, real);
 }
 
 CTEST(sorts_test, quick_sort)
 {
-    int expected[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    quick(array, 0, number - 1);
-    int i;
+    int* array = NULL;
+    int expected = 1024;
 
-    for (i = 0; i < number; i++)
-        ASSERT_EQUAL(expected[i], array[i]);
+    array = (int*)malloc(number * sizeof(int));
+    generator(array, number);
+
+    quick(array, 0, number - 1);
+    int i, real = 0;
+
+    for (i = 0; i < number; i++) {
+        if (array[i] <= array[i + 1])
+            real++;
+        else
+            real--;
+    }
+
+    ASSERT_EQUAL(expected, real);
+        
 }
 
 CTEST(other_test, swap)

@@ -5,23 +5,26 @@ PATHSRC = src/
 PATHBINTEST = bin_test/
 PATHBBUILDTEST = build_test/
 PATHTEST = test/
-
+ 
 all: bin build $(PATHBIN)sorts
 
-$(PATHBIN)sorts: $(PATHBUILD)bubble.o $(PATHBUILD)quick.o $(PATHBUILD)generator.o $(PATHBUILD)time_sort.o $(PATHBUILD)sorts.o
-	gcc -Wall $(PATHBUILD)bubble.o $(PATHBUILD)quick.o $(PATHBUILD)generator.o $(PATHBUILD)time_sort.o $(PATHBUILD)sorts.o -o $(PATHBIN)sorts
+$(PATHBIN)sorts: $(PATHBUILD)sorts.o libsorts.so
+	gcc $(PATHBUILD)sorts.o -L. -lsorts -o sorts
+
+libsorts.so: $(PATHBUILD)bubble.o $(PATHBUILD)quick.o $(PATHBUILD)generator.o $(PATHBUILD)time_sort.o
+	gcc -shared $(PATHBUILD)bubble.o $(PATHBUILD)quick.o $(PATHBUILD)generator.o $(PATHBUILD)time_sort.o -o libsorts.so
 
 $(PATHBUILD)bubble.o: $(PATHSRC)bubble.c
-	gcc -Wall -c $(PATHSRC)bubble.c -o $(PATHBUILD)bubble.o
+	gcc -Wall -fPIC -c $(PATHSRC)bubble.c -o $(PATHBUILD)bubble.o
 
 $(PATHBUILD)quick.o: $(PATHSRC)quick.c
-	gcc -Wall -c $(PATHSRC)quick.c -o $(PATHBUILD)quick.o
+	gcc -Wall -fPIC -c $(PATHSRC)quick.c -o $(PATHBUILD)quick.o
 
 $(PATHBUILD)generator.o: $(PATHSRC)generator.c
-	gcc -Wall -c $(PATHSRC)generator.c -o $(PATHBUILD)generator.o
+	gcc -Wall -fPIC -c $(PATHSRC)generator.c -o $(PATHBUILD)generator.o
 
 $(PATHBUILD)time_sort.o: $(PATHSRC)time_sort.c
-	gcc -Wall -c $(PATHSRC)time_sort.c -o $(PATHBUILD)time_sort.o
+	gcc -Wall -fPIC -c $(PATHSRC)time_sort.c -o $(PATHBUILD)time_sort.o
 
 $(PATHBUILD)sorts.o: $(PATHSRC)sorts.c
 	gcc -Wall -c $(PATHSRC)sorts.c -o $(PATHBUILD)sorts.o

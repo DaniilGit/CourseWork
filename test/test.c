@@ -20,7 +20,7 @@ CTEST(sorts_test, bubble_sort)
         if (array[i] <= array[i + 1])
             real++;
         else
-            real--;
+            real = 0;
     }
 
     ASSERT_EQUAL(expected, real);
@@ -41,7 +41,7 @@ CTEST(sorts_test, quick_sort)
         if (array[i] <= array[i + 1])
             real++;
         else
-            real--;
+            real = 0;
     }
 
     ASSERT_EQUAL(expected, real);

@@ -9,7 +9,7 @@ PATHTEST = test/
 all: bin build $(PATHBIN)sorts
 
 $(PATHBIN)sorts: $(PATHBUILD)sorts.o libsorts.so
-	gcc $(PATHBUILD)sorts.o -L. -lsorts -o sorts
+	gcc $(PATHBUILD)sorts.o -L. -lsorts -o $(PATHBIN)sorts
 
 libsorts.so: $(PATHBUILD)bubble.o $(PATHBUILD)quick.o $(PATHBUILD)generator.o $(PATHBUILD)time_sort.o
 	gcc -shared $(PATHBUILD)bubble.o $(PATHBUILD)quick.o $(PATHBUILD)generator.o $(PATHBUILD)time_sort.o -o libsorts.so

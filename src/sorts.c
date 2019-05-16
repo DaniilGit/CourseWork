@@ -7,11 +7,10 @@ int main()
 {
     int number;
 
-    for (number = 256; number <= 32768; number = number + 2048) {
+    for (number = 256; number <= 33025; number = number + 2048) {
 
-        int i;
-        int *array_q = NULL;
-        int *array_b = NULL;
+        int* array_q = NULL;
+        int* array_b = NULL;
 
         array_q = (int*)malloc(number * sizeof(int));
         array_b = (int*)malloc(number * sizeof(int));
@@ -29,6 +28,7 @@ int main()
         t = time_sort() - t;
         double t_q = t;
 
+        /*int i;
         for (i = 0; i < number - 1; i++) {
             if (array_b[i] > array_b[i + 1]) {
                 printf("The array_bubble is not sorted");
@@ -38,7 +38,7 @@ int main()
                 printf("The array_quick is not sorted");
                 return -1; 
             }
-        }
+        }*/
 
         printf("\n");
         printf("%d\t", number);

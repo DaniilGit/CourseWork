@@ -1,6 +1,7 @@
 #include "sorts.h"
 
-void quick(int* array_q, int left, int right) {
+void quick(int* array_q, int left, int right) 
+{
 	int position;
 	int left_copy = left;
 	int right_copy = right;
@@ -24,7 +25,7 @@ void quick(int* array_q, int left, int right) {
 	left = left_copy;
 
 	if (left < position)
-		quick(array_q, left, position - 1 );
+		quick(array_q, left, position - 1);
 	if (right > position)
 		quick(array_q, position + 1, right);
 }
